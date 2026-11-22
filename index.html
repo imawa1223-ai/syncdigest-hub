@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="web_standard" name="shell-type" />
+  <title>SyncDigest · 新知學習彙整庫</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Work+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overscroll-behavior: none;
+        font-family: 'Work Sans', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+      main > :first-child {
+        margin-top: 0 !important;
+      }
+      main > :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      user-select: none;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-container": "#141c26",
+            "surface-variant": "#e3e2df",
+            "on-background": "#1b1c1a",
+            "surface-container": "#efeeea",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed": "#2f1500",
+            "primary": "#000000",
+            "secondary-container": "#86f2e4",
+            "on-error": "#ffffff",
+            "on-surface": "#1b1c1a",
+            "primary-fixed": "#dbe3f1",
+            "inverse-surface": "#30312e",
+            "on-secondary-fixed-variant": "#005049",
+            "on-primary": "#ffffff",
+            "inverse-on-surface": "#f2f1ed",
+            "on-secondary-container": "#006f66",
+            "on-error-container": "#93000a",
+            "surface": "#faf9f5",
+            "surface-container-low": "#f5f4f0",
+            "surface-container-lowest": "#ffffff",
+            "inverse-primary": "#bfc7d5",
+            "error": "#ba1a1a",
+            "on-primary-container": "#7c8491",
+            "primary-fixed-dim": "#bfc7d5",
+            "tertiary-fixed": "#ffdcc3",
+            "tertiary-container": "#2f1500",
+            "background": "#faf9f5",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#ffb77d",
+            "surface-container-highest": "#e3e2df",
+            "secondary": "#006a61",
+            "outline": "#75777c",
+            "surface-dim": "#dbdad6",
+            "on-primary-fixed": "#141c26",
+            "secondary-fixed": "#89f5e7",
+            "on-tertiary-container": "#c76c00",
+            "secondary-fixed-dim": "#6bd8cb",
+            "surface-container-high": "#e9e8e4",
+            "on-primary-fixed-variant": "#3f4753",
+            "tertiary": "#000000",
+            "outline-variant": "#c5c6cc",
+            "on-tertiary-fixed-variant": "#6e3900",
+            "surface-tint": "#575f6b",
+            "on-surface-variant": "#44474b",
+            "on-secondary-fixed": "#00201d",
+            "error-container": "#ffdad6",
+            "surface-bright": "#faf9f5"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "margin-mobile": "1rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "margin": "3rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "gutter": "1.5rem",
+            "gutter-mobile": "1rem"
+          },
+          fontFamily: {
+            "label-code": ["JetBrains Mono", "monospace"],
+            "display-hero-mobile": ["Newsreader", "Noto Sans TC"],
+            "headline-md": ["Work Sans", "Noto Sans TC"],
+            "body-lg": ["Newsreader", "Noto Sans TC"],
+            "display-hero": ["Newsreader", "Noto Sans TC"],
+            "label-caps": ["Work Sans", "Noto Sans TC"],
+            "body-md": ["Work Sans", "Noto Sans TC"],
+            "body-sm": ["Work Sans", "Noto Sans TC"],
+            "headline-lg-mobile": ["Newsreader", "Noto Sans TC"],
+            "headline-lg": ["Newsreader", "Noto Sans TC"],
+            "headline-sm": ["Work Sans", "Noto Sans TC"]
+          },
+          fontSize: {
+            "label-code": ["11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "30px", "fontWeight": "400" }],
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "fontWeight": "600" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-tertiary-fixed">
+
+  <!-- 頂部導覽列 -->
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+    <div class="h-20 w-full max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md">
+      <div class="flex items-center gap-space-lg flex-shrink-0">
+        <a id="brandHomeLink" class="flex items-center gap-space-sm group" href="#">
+          <div class="w-7 h-7 rounded bg-on-tertiary-container flex items-center justify-center shadow-sm group-hover:bg-tertiary-container transition-colors">
+            <span class="material-symbols-outlined text-surface-container-lowest text-[18px]">auto_stories</span>
+          </div>
+          <span class="font-headline-md text-headline-md tracking-tight text-on-surface font-semibold">SyncDigest</span>
+        </a>
+        <div class="hidden xl:flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container text-on-surface-variant font-label-code text-label-code">
+          <span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></span>
+          <span>DAILY 08:30 • 5 大媒體同步</span>
+        </div>
+      </div>
+
+      <div class="flex-1 max-w-md hidden md:block">
+        <div class="relative flex items-center w-full">
+          <span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span>
+          <input id="searchInput" class="w-full pl-9 pr-4 py-2 bg-surface-container-lowest text-on-surface font-body-sm text-body-sm rounded shadow-[0_1px_2px_rgba(18,26,36,0.04)] placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-on-tertiary-container transition-all" placeholder="搜尋文章標題、模型、媒體、主題..." type="text" />
+        </div>
+      </div>
+
+      <nav class="flex items-center gap-space-xs p-1 bg-surface-container rounded">
+        <button id="btnViewColumns" type="button" class="view-nav-btn px-3 py-1.5 rounded text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container-high transition-all">5 欄並列</button>
+        <button id="btnViewMatrix" type="button" class="view-nav-btn px-3 py-1.5 rounded transition-all bg-primary-container text-surface-container-lowest font-headline-sm text-body-sm">卡片矩陣</button>
+        <button id="btnViewAnalytics" type="button" class="view-nav-btn px-3 py-1.5 rounded text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container-high transition-all">趨勢圖表</button>
+      </nav>
+
+      <div class="flex items-center gap-space-sm flex-shrink-0">
+        <button id="btnSavedFilter" type="button" class="flex items-center gap-space-xs px-3.5 py-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm rounded transition-colors">
+          <span class="material-symbols-outlined text-[16px] text-on-tertiary-container">bookmark</span>
+          <span>書籤</span>
+          <span id="savedCountBadge" class="font-label-code text-label-code px-1.5 py-0.2 rounded bg-surface-container-lowest text-on-surface font-semibold">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]">
+    <div class="flex flex-col w-full">
+      <div id="mainContainer" class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-space-xl transition-all">
+
+        <header class="flex flex-col gap-space-lg mb-space-xl">
+          <div class="flex flex-wrap items-center justify-between gap-space-sm">
+            <div class="flex items-center gap-space-xs font-label-code text-label-code text-on-surface-variant">
+              <span class="inline-block w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+              <span id="heroEyebrow" class="tracking-wide">LIVE KNOWLEDGE HUB</span>
+              <span class="text-outline-variant">•</span>
+              <span class="text-on-surface">即時聚合 5 大精選媒體</span>
+            </div>
+            <div class="flex items-center gap-space-sm text-outline font-label-code text-label-code">
+              <span>CATALOG MATRIX v3.4</span>
+              <span>//</span>
+              <span class="text-secondary font-semibold">ALL SYSTEMS NOMINAL</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+            <div class="flex flex-col">
+              <h1 id="heroMainTitle" class="font-headline-lg text-headline-lg lg:text-display-hero text-on-surface font-semibold tracking-tight">
+                全部新知彙整
+              </h1>
+              <p id="heroSubTitle" class="font-label-caps text-label-caps text-on-surface-variant tracking-widest mt-space-xs uppercase">
+                All Curated Insights • Design, AI, Exhibitions &amp; Commerce
+              </p>
+            </div>
+
+            <div class="flex flex-wrap items-stretch gap-space-sm">
+              <div class="flex items-center gap-space-md px-space-md py-2.5 bg-surface-container rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
+                <div class="flex flex-col">
+                  <span class="font-label-caps text-label-caps text-on-surface-variant">收錄新知</span>
+                  <span class="font-headline-sm text-headline-sm font-semibold text-on-surface">全部文章</span>
+                </div>
+                <span id="statTotalNum" class="font-headline-lg text-headline-lg font-bold text-on-tertiary-container leading-none">41</span>
+              </div>
+              <div class="flex items-center gap-space-md px-space-md py-2.5 bg-surface-container rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
+                <div class="flex flex-col">
+                  <span class="font-label-caps text-label-caps text-on-surface-variant">人工智慧</span>
+                  <span class="font-headline-sm text-headline-sm font-semibold text-on-surface">AI 技術專題</span>
+                </div>
+                <span id="statAiNum" class="font-headline-lg text-headline-lg font-bold text-on-surface leading-none">18</span>
+              </div>
+              <div class="flex items-center gap-space-md px-space-md py-2.5 bg-surface-container rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
+                <div class="flex flex-col">
+                  <span class="font-label-caps text-label-caps text-on-surface-variant">策展與視覺</span>
+                  <span class="font-headline-sm text-headline-sm font-semibold text-on-surface">展覽與設計</span>
+                </div>
+                <span id="statDesignExNum" class="font-headline-lg text-headline-lg font-bold text-secondary leading-none">15</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-space-md pt-space-md bg-surface-container-low rounded-xl p-space-md shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-space-sm">
+              <div id="categoryFilterGroup" class="flex flex-wrap items-center gap-space-xs"></div>
+              <div id="aiModelSubBar" class="flex items-center gap-space-xs font-body-sm text-body-sm">
+                <span class="font-label-caps text-label-caps text-outline mr-1 tracking-wider">AI 模型：</span>
+                <button type="button" data-model="ALL" class="model-btn px-2.5 py-1 rounded bg-primary-container text-surface-container-lowest font-body-sm text-body-sm">全部</button>
+                <button type="button" data-model="Claude" class="model-btn px-2.5 py-1 rounded bg-surface-container text-on-surface font-body-sm text-body-sm hover:bg-surface-container-high">Claude</button>
+                <button type="button" data-model="GPT" class="model-btn px-2.5 py-1 rounded bg-surface-container text-on-surface font-body-sm text-body-sm hover:bg-surface-container-high">GPT</button>
+                <button type="button" data-model="Codex" class="model-btn px-2.5 py-1 rounded bg-surface-container text-on-surface font-body-sm text-body-sm hover:bg-surface-container-high">Codex</button>
+              </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-sm pt-space-xs">
+              <div id="sourceFilterGroup" class="flex flex-wrap items-center gap-space-xs font-body-sm text-body-sm"></div>
+              <div class="flex items-center gap-space-xs font-label-code text-label-code text-on-surface-variant">
+                <span class="material-symbols-outlined text-[15px] text-outline">tune</span>
+                <span>排序：最新收錄</span>
+                <span class="text-outline-variant">•</span>
+                <span id="viewStatusText">卡片型錄模式</span>
+                <span class="text-outline-variant">|</span>
+                <span class="text-secondary font-medium">每日 08:30 自動對齊</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <section id="matrixViewSection">
+          <div id="matrixGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg"></div>
+        </section>
+
+        <section id="columnsViewSection" class="hidden w-full overflow-x-auto pb-4">
+          <div id="columnsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-space-md min-w-[1260px]"></div>
+        </section>
+
+        <section id="analyticsViewSection" class="hidden">
+          <div id="analyticsContainer" class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg"></div>
+        </section>
+
+        <div class="mt-space-xl flex flex-col items-center justify-center gap-space-xs">
+          <span id="footerCountCaption" class="font-label-code text-label-code text-outline">展示 41 / 41 篇聚合新知 • 每日 08:30 自動更新</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="w-full bg-surface-container-low mt-space-xl shadow-[0_-1px_6px_rgba(0,0,0,0.02)]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-space-xl">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg pb-space-lg">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-md font-label-code text-label-code text-on-surface-variant">
+          <div class="flex items-center gap-space-xs">
+            <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+            <span>即時串流：5 大精選媒體每日 08:30 自動校驗最新發布</span>
+          </div>
+          <span class="hidden sm:inline text-outline-variant">•</span>
+          <div class="flex items-center gap-space-xs">
+            <span class="material-symbols-outlined text-[14px]">schedule</span>
+            <span>Inspirr Creation • iT 邦幫忙 • 數位時代 • 設計趨勢 • 電腦王阿達 &amp; 蘋果仁</span>
+          </div>
+        </div>
+      </div>
+      <div class="pt-space-md border-t border-outline-variant/20 flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-body-sm text-body-sm">
+        <div class="flex items-center gap-space-sm font-label-caps text-label-caps tracking-widest text-outline">
+          <span>SYNCDIGEST INTELLIGENCE ARCHIVE</span>
+          <span>//</span>
+          <span>EDITORIAL COMPUTING</span>
+        </div>
+        <div>© 2026 SyncDigest · Team Knowledge Hub</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const SOURCES = [
+      { id: 'inspirr', name: 'Inspirr Creation', shortName: 'Inspirr', tagline: '品牌設計 • 字體美學 • 電商策略', url: 'https://www.inspirr.com/' },
+      { id: 'ithome', name: 'iT 邦幫忙', shortName: 'iT 邦幫忙', tagline: 'AI 工具實戰 • 前端開發 • 資安治理', url: 'https://ithelp.ithome.com.tw/' },
+      { id: 'bnext', name: '數位時代 Business Next', shortName: '數位時代', tagline: 'AI 趨勢 • 數位轉型 • 零售電商', url: 'https://www.bnext.com.tw/' },
+      { id: 'design', name: '設計趨勢與 UX 觀察', shortName: '設計趨勢', tagline: '展覽快訊 • 視覺趨勢 • 使用者體驗', url: 'https://www.shoppingdesign.com.tw/' },
+      { id: 'koc_apple', name: '電腦王阿達 & 蘋果仁', shortName: '阿達 & 蘋果仁', tagline: 'AI 新知實測 • 軟體升級 • 科技展會', url: 'https://www.kocpc.com.tw/' }
+    ];
+
+    const CATEGORIES = [
+      {
+        id: 'ALL',
+        label: '全部文章',
+        eyebrow: 'LIVE KNOWLEDGE HUB',
+        title: '全部新知彙整',
+        subtitle: 'All Curated Insights • Design, AI, Exhibitions & Commerce'
+      },
+      {
+        id: 'EXHIBITION',
+        label: '展覽',
+        eyebrow: 'CURATED EXHIBITION HUB',
+        title: '展覽與藝文活動',
+        subtitle: 'Exhibitions & Cultural Spaces • Curated Matrix'
+      },
+      {
+        id: 'AI',
+        label: 'AI',
+        eyebrow: 'LIVE TECH FEED HUB',
+        title: '人工智慧新知',
+        subtitle: 'Artificial Intelligence & Tech Insights • Curated Matrix'
+      },
+      {
+        id: 'DESIGN',
+        label: '設計新知',
+        eyebrow: 'EDITORIAL DESIGN SYSTEM',
+        title: '設計趨勢與視覺體驗',
+        subtitle: 'Visual Design, Typography & UX • Curated Matrix'
+      },
+      {
+        id: 'ECOMMERCE',
+        label: '電商',
+        eyebrow: 'DIGITAL COMMERCE HUB',
+        title: '電商策略與品牌行銷',
+        subtitle: 'E-Commerce, Retail Media & Conversion • Curated Matrix'
+      }
+    ];
+
+    const ARTICLES = [
+  {
+    "id": "art-01",
+    "title": "2025年平面設計趨勢：創意與實用性的完美融合",
+    "sourceId": "inspirr",
+    "sourceName": "Inspirr Creation",
+    "category": "DESIGN",
+    "aiModel": "",
+    "date": "2024-11-13",
+    "url": "https://www.inspirr.com/2025-graphic-design-trend/",
+    "summary": "解析平面設計在質感深度、敘事動畫、新自然主義與個性化體驗上的趨勢方向，兼顧創意表現與品牌實用性。",
+    "badgeLine1": "設計",
+    "badgeLine2": "趨勢",
+    "posterCaps": "DESIGN & VISUAL TRENDS",
+    "posterTitle": "GRAPHIC TRENDS",
+    "posterSub": "創意與實用性 • 質感與敘事動畫",
+    "posterPill": "平面設計趨勢剖析",
+    "footerTag": "平面設計 • 視覺趨勢"
+  },
+  {
+    "id": "art-02",
+    "title": "2026企業養帳號新邏輯：從「防封」升級為「信任資產投資」",
+    "sourceId": "inspirr",
+    "sourceName": "Inspirr Creation",
+    "category": "ECOMMERCE",
+    "aiModel": "",
+    "date": "2026-08-03",
+    "url": "https://www.inspirr.com/enterprise-account-nurturing-platform-trust-assets/",
+    "summary": "在 AI 行為風控時代，單靠裝置隔離與機器發文已難維持成效，企業應將養帳號轉型為平台信任資產投資。",
+    "badgeLine1": "策略",
+    "badgeLine2": "佈局",
+    "posterCaps": "PLATFORM TRUST ASSETS",
+    "posterTitle": "BRAND ACCOUNT",
+    "posterSub": "AI 行為風控時代 • 信任資產投資",
+    "posterPill": "帳號健康分與信任資產",
+    "footerTag": "品牌營運 • 帳號策略"
+  },
+  {
+    "id": "art-03",
+    "title": "Inspirr Creation 品牌設計與數位行銷專區",
+    "sourceId": "inspirr",
+    "sourceName": "Inspirr Creation",
+    "category": "ECOMMERCE",
+    "aiModel": "",
+    "date": "2026-10-14",
+    "url": "https://www.inspirr.com/",
+    "summary": "前往 Inspirr Creation 官網瀏覽最新品牌視覺案例、行銷策略解析與網站設計專欄。",
+    "badgeLine1": "品牌",
+    "badgeLine2": "專區",
+    "posterCaps": "INSPIRR CREATION HUB",
+    "posterTitle": "BRAND & WEB",
+    "posterSub": "品牌視覺案例 • 數位行銷專欄",
+    "posterPill": "Inspirr 官方網站",
+    "footerTag": "Inspirr Creation • 官方首頁"
+  },
+  {
+    "id": "art-04",
+    "title": "Inspirr Creation 設計與視覺美學總覽",
+    "sourceId": "inspirr",
+    "sourceName": "Inspirr Creation",
+    "category": "DESIGN",
+    "aiModel": "",
+    "date": "2026-09-28",
+    "url": "https://www.inspirr.com/",
+    "summary": "前往 Inspirr Creation 官網查看最新平面設計、品牌識別與視覺美學相關文章。",
+    "badgeLine1": "設計",
+    "badgeLine2": "總覽",
+    "posterCaps": "VISUAL DESIGN ARCHIVE",
+    "posterTitle": "DESIGN GALLERY",
+    "posterSub": "品牌識別 • 視覺美學觀察",
+    "posterPill": "Inspirr 官方網站",
+    "footerTag": "Inspirr Creation • 官方首頁"
+  },
+  {
+    "id": "art-05",
+    "title": "Inspirr Creation AI 創意與數位工具觀察",
+    "sourceId": "inspirr",
+    "sourceName": "Inspirr Creation",
+    "category": "AI",
+    "aiModel": "",
+    "date": "2026-09-10",
+    "url": "https://www.inspirr.com/",
+    "summary": "前往 Inspirr Creation 官網瀏覽生成式 AI 輔助設計與數位內容製作的相關分享。",
+    "badgeLine1": "AI",
+    "badgeLine2": "分享",
+    "posterCaps": "AI CREATIVE NOTES",
+    "posterTitle": "CREATIVE AI",
+    "posterSub": "生成式視覺 • 數位內容應用",
+    "posterPill": "Inspirr 官方網站",
+    "footerTag": "Inspirr Creation • 官方首頁"
+  },
+  {
+    "id": "art-06",
+    "title": "Inspirr Creation 藝文與策展動態總覽",
+    "sourceId": "inspirr",
+    "sourceName": "Inspirr Creation",
+    "category": "EXHIBITION",
+    "aiModel": "",
+    "date": "2026-10-05",
+    "url": "https://www.inspirr.com/",
+    "summary": "前往 Inspirr Creation 官網查看最新策展觀察、設計活動與視覺美學動態。",
+    "badgeLine1": "策展",
+    "badgeLine2": "動態",
+    "posterCaps": "CULTURAL & EXHIBITION",
+    "posterTitle": "EXHIBITION HUB",
+    "posterSub": "策展觀察 • 設計活動動態",
+    "posterPill": "Inspirr 官方網站",
+    "footerTag": "Inspirr Creation • 官方首頁"
+  },
+  {
+    "id": "art-07",
+    "title": "Inspirr Creation 品牌官網與電商策略專欄",
+    "sourceId": "inspirr",
+    "sourceName": "Inspirr Creation",
+    "category": "ECOMMERCE",
+    "aiModel": "",
+    "date": "2026-08-22",
+    "url": "https://www.inspirr.com/",
+    "summary": "前往 Inspirr Creation 官網瀏覽品牌官網規劃、內容行銷與電商視覺相關文章。",
+    "badgeLine1": "電商",
+    "badgeLine2": "專欄",
+    "posterCaps": "COMMERCE & BRANDING",
+    "posterTitle": "STOREFRONT HUB",
+    "posterSub": "品牌官網規劃 • 電商視覺策略",
+    "posterPill": "Inspirr 官方網站",
+    "footerTag": "Inspirr Creation • 官方首頁"
+  },
+  {
+    "id": "art-08",
+    "title": "Inspirr Creation 排版與設計專欄總覽",
+    "sourceId": "inspirr",
+    "sourceName": "Inspirr Creation",
+    "category": "DESIGN",
+    "aiModel": "",
+    "date": "2026-07-19",
+    "url": "https://www.inspirr.com/",
+    "summary": "前往 Inspirr Creation 官網查閱更多網頁設計、字體排版與品牌視覺文章。",
+    "badgeLine1": "排版",
+    "badgeLine2": "專欄",
+    "posterCaps": "EDITORIAL & LAYOUT",
+    "posterTitle": "TYPE & LAYOUT",
+    "posterSub": "網頁設計 • 字體排版分享",
+    "posterPill": "Inspirr 官方網站",
+    "footerTag": "Inspirr Creation • 官方首頁"
+  },
+  {
+    "id": "art-09",
+    "title": "AI 繪圖必備攝影觀念－鏡頭焦段、透視感",
+    "sourceId": "ithome",
+    "sourceName": "iT 邦幫忙",
+    "category": "AI",
+    "aiModel": "",
+    "date": "2025-08-10",
+    "url": "https://ithelp.ithome.com.tw/articles/10367034",
+    "summary": "說明如何運用 Firefly 等影像生成工具設定相機角度、微距或廣角透視與光源方向，精準控制畫面氛圍。",
+    "badgeLine1": "光影",
+    "badgeLine2": "透視",
+    "posterCaps": "CAMERA & PERSPECTIVE",
+    "posterTitle": "LENS & OPTICS",
+    "posterSub": "鏡頭焦段控制 • 透視感與光源塑造",
+    "posterPill": "AI 攝影觀念實戰",
+    "footerTag": "iT 邦幫忙 • 10367034"
+  },
+  {
+    "id": "art-10",
+    "title": "想要三秒生出專業級照片？只需攝影基本觀念 + Firefly 手指點一點",
+    "sourceId": "ithome",
+    "sourceName": "iT 邦幫忙",
+    "category": "AI",
+    "aiModel": "",
+    "date": "2025-08-12",
+    "url": "https://ithelp.ithome.com.tw/articles/10366683",
+    "summary": "整理構圖比例、色溫與景深等攝影基礎設定，示範如何在 Firefly 介面中快速產出可用於商品情境的配圖。",
+    "badgeLine1": "速成",
+    "badgeLine2": "技巧",
+    "posterCaps": "COMMERCIAL STUDIO AI",
+    "posterTitle": "PRO PHOTOGRAPHY",
+    "posterSub": "構圖比例設定 • 色溫與景深調校",
+    "posterPill": "商品情境配圖實戰",
+    "footerTag": "iT 邦幫忙 • 10366683"
+  },
+  {
+    "id": "art-11",
+    "title": "藝術手法可提升設計品質，但不懂如何畫怎麼解？",
+    "sourceId": "ithome",
+    "sourceName": "iT 邦幫忙",
+    "category": "AI",
+    "aiModel": "",
+    "date": "2025-08-15",
+    "url": "https://ithelp.ithome.com.tw/articles/10367275",
+    "summary": "結合光圈、快門、鏡頭焦段與光源塑造等攝影基礎，進一步學習多元繪畫風格，讓 Firefly 產出更豐富多變的畫面。",
+    "badgeLine1": "風格",
+    "badgeLine2": "解方",
+    "posterCaps": "ARTISTIC STYLE & LIGHT",
+    "posterTitle": "FIREFLY STYLE",
+    "posterSub": "攝影基礎設定 • 多元繪畫風格搭配",
+    "posterPill": "提升視覺設計品質",
+    "footerTag": "iT 邦幫忙 • 10367275"
+  },
+  {
+    "id": "art-12",
+    "title": "OWASP LLM Top 10：2026 版 AI 常見風險與治理框架",
+    "sourceId": "ithome",
+    "sourceName": "iT 邦幫忙",
+    "category": "AI",
+    "aiModel": "",
+    "date": "2026-08-18",
+    "url": "https://ithelp.ithome.com.tw/m/articles/10405026",
+    "summary": "發布大型語言模型安全風險指南（如 Prompt Injection 與資料外洩防護），協助團隊導入 AI 工作流時建立治理規範。",
+    "badgeLine1": "必讀",
+    "badgeLine2": "治理",
+    "posterCaps": "GOVERNANCE & COMPLIANCE",
+    "posterTitle": "LLM SECURITY 2026",
+    "posterSub": "企業模型治理 • 資料外洩防護",
+    "posterPill": "OWASP Top 10 指南",
+    "footerTag": "iT 邦幫忙 • 10405026"
+  },
+  {
+    "id": "art-13",
+    "title": "[Day 19 ]OpenAI AI Agent 因為錯誤導致的攻擊事件",
+    "sourceId": "ithome",
+    "sourceName": "iT 邦幫忙",
+    "category": "AI",
+    "aiModel": "GPT",
+    "date": "2026-10-03",
+    "url": "https://ithelp.ithome.com.tw/articles/10420597",
+    "summary": "解析 AI Agent 在網路安全測試中繞過隔離控制進入外部系統的事件成因，提醒強化自動化權限與環境隔離。",
+    "badgeLine1": "資安",
+    "badgeLine2": "解析",
+    "posterCaps": "AGENTIC SECURITY",
+    "posterTitle": "GPT AGENT AUDIT",
+    "posterSub": "網路隔離邊界 • 自主權限風險解析",
+    "posterPill": "AI Agent 安全案例",
+    "footerTag": "iT 邦幫忙 • 10420597"
+  },
+  {
+    "id": "art-14",
+    "title": "Anthropic 推出 Claude Fable 5.2、Mythos 5.2：效能提升與多檔案開發",
+    "sourceId": "ithome",
+    "sourceName": "iT 邦幫忙",
+    "category": "AI",
+    "aiModel": "Claude",
+    "date": "2026-11-10",
+    "url": "https://www.kocpc.com.tw/archives/702740",
+    "summary": "整理 Claude Fable 5.2 與 Mythos 5.2 發布重點與效能表現，提供開發與創作工作流參考。",
+    "badgeLine1": "發布",
+    "badgeLine2": "速報",
+    "posterCaps": "ANTHROPIC RELEASE",
+    "posterTitle": "FABLE & MYTHOS 5.2",
+    "posterSub": "效能大幅提升 • 新一代模型發布",
+    "posterPill": "Claude 5.2 發布重點",
+    "footerTag": "電腦王阿達 • archives/702740"
+  },
+  {
+    "id": "art-15",
+    "title": "iT 邦幫忙 AI 開發與技術文章總覽",
+    "sourceId": "ithome",
+    "sourceName": "iT 邦幫忙",
+    "category": "AI",
+    "aiModel": "Codex",
+    "date": "2026-10-22",
+    "url": "https://ithelp.ithome.com.tw/",
+    "summary": "前往 iT 邦幫忙瀏覽最新 AI 開發工具、前端工程與系統架構技術文章。",
+    "badgeLine1": "技術",
+    "badgeLine2": "總覽",
+    "posterCaps": "ITHELP TECH COMMUNITY",
+    "posterTitle": "DEV & AI HUB",
+    "posterSub": "AI 工具實戰 • 前端與系統架構",
+    "posterPill": "iT 邦幫忙首頁",
+    "footerTag": "iT 邦幫忙 • 技術社群"
+  },
+  {
+    "id": "art-16",
+    "title": "iT 邦幫忙 網頁設計與前端技術文章總覽",
+    "sourceId": "ithome",
+    "sourceName": "iT 邦幫忙",
+    "category": "DESIGN",
+    "aiModel": "",
+    "date": "2026-09-14",
+    "url": "https://ithelp.ithome.com.tw/",
+    "summary": "前往 iT 邦幫忙查閱更多前端切版、CSS 動畫與網頁效能優化討論。",
+    "badgeLine1": "前端",
+    "badgeLine2": "總覽",
+    "posterCaps": "FRONTEND & CSS NOTES",
+    "posterTitle": "WEB & MOTION",
+    "posterSub": "前端切版 • 網頁效能與動畫",
+    "posterPill": "iT 邦幫忙首頁",
+    "footerTag": "iT 邦幫忙 • 技術社群"
+  },
+  {
+    "id": "art-17",
+    "title": "Claude AI 深度應用與工作流解析",
+    "sourceId": "bnext",
+    "sourceName": "數位時代 Business Next",
+    "category": "AI",
+    "aiModel": "Claude",
+    "date": "2026-11-11",
+    "url": "https://www.bnext.com.tw/article/90109/claude-ai",
+    "summary": "解析 Claude AI 在日常工作流、內容整理與團隊協作中的應用場景與實務重點。",
+    "badgeLine1": "重磅",
+    "badgeLine2": "焦點",
+    "posterCaps": "ENTERPRISE AI WORKFLOW",
+    "posterTitle": "CLAUDE AI GUIDE",
+    "posterSub": "工作流解析 • 團隊協作應用",
+    "posterPill": "數位時代深度報導",
+    "footerTag": "數位時代 • article/90109"
+  },
+  {
+    "id": "art-18",
+    "title": "數位時代 零售與電商趨勢總覽",
+    "sourceId": "bnext",
+    "sourceName": "數位時代 Business Next",
+    "category": "ECOMMERCE",
+    "aiModel": "",
+    "date": "2026-10-28",
+    "url": "https://www.bnext.com.tw/",
+    "summary": "前往數位時代網站瀏覽最新零售電商、數位轉型與商業模式報導。",
+    "badgeLine1": "電商",
+    "badgeLine2": "總覽",
+    "posterCaps": "BUSINESS NEXT COMMERCE",
+    "posterTitle": "RETAIL & TECH",
+    "posterSub": "零售電商 • 數位轉型報導",
+    "posterPill": "數位時代首頁",
+    "footerTag": "數位時代 • 官方首頁"
+  },
+  {
+    "id": "art-19",
+    "title": "數位時代 行銷與數據應用報導總覽",
+    "sourceId": "bnext",
+    "sourceName": "數位時代 Business Next",
+    "category": "ECOMMERCE",
+    "aiModel": "",
+    "date": "2026-09-25",
+    "url": "https://www.bnext.com.tw/",
+    "summary": "前往數位時代網站查閱最新數位行銷、品牌經營與廣告趨勢文章。",
+    "badgeLine1": "行銷",
+    "badgeLine2": "總覽",
+    "posterCaps": "MARKETING & DATA",
+    "posterTitle": "BRAND & GROWTH",
+    "posterSub": "數位行銷 • 品牌經營觀察",
+    "posterPill": "數位時代首頁",
+    "footerTag": "數位時代 • 官方首頁"
+  },
+  {
+    "id": "art-20",
+    "title": "數位時代 AI 與科技趨勢報導總覽",
+    "sourceId": "bnext",
+    "sourceName": "數位時代 Business Next",
+    "category": "AI",
+    "aiModel": "GPT",
+    "date": "2026-11-17",
+    "url": "https://www.bnext.com.tw/",
+    "summary": "前往數位時代網站瀏覽最新生成式 AI、模型演進與企業應用新聞。",
+    "badgeLine1": "AI",
+    "badgeLine2": "總覽",
+    "posterCaps": "BNEXT AI COVERAGE",
+    "posterTitle": "AI & MODELS",
+    "posterSub": "生成式 AI • 企業應用新聞",
+    "posterPill": "數位時代首頁",
+    "footerTag": "數位時代 • 官方首頁"
+  },
+  {
+    "id": "art-21",
+    "title": "數位時代 創新展會與創業活動總覽",
+    "sourceId": "bnext",
+    "sourceName": "數位時代 Business Next",
+    "category": "EXHIBITION",
+    "aiModel": "",
+    "date": "2026-11-08",
+    "url": "https://www.bnext.com.tw/",
+    "summary": "前往數位時代網站查看 Meet Taipei 等科技展會與新創活動報導。",
+    "badgeLine1": "展會",
+    "badgeLine2": "總覽",
+    "posterCaps": "STARTUP & EXPO NEWS",
+    "posterTitle": "EVENT COVERAGE",
+    "posterSub": "科技展會 • 新創活動報導",
+    "posterPill": "數位時代首頁",
+    "footerTag": "數位時代 • 官方首頁"
+  },
+  {
+    "id": "art-22",
+    "title": "數位時代 品牌與內容經濟報導總覽",
+    "sourceId": "bnext",
+    "sourceName": "數位時代 Business Next",
+    "category": "ECOMMERCE",
+    "aiModel": "",
+    "date": "2026-08-29",
+    "url": "https://www.bnext.com.tw/",
+    "summary": "前往數位時代網站瀏覽 IP 聯名、內容行銷與消費者趨勢文章。",
+    "badgeLine1": "品牌",
+    "badgeLine2": "總覽",
+    "posterCaps": "CONSUMER TRENDS",
+    "posterTitle": "BRAND ECONOMY",
+    "posterSub": "IP 聯名 • 消費者趨勢觀察",
+    "posterPill": "數位時代首頁",
+    "footerTag": "數位時代 • 官方首頁"
+  },
+  {
+    "id": "art-23",
+    "title": "數位時代 企業數位轉型與知識管理總覽",
+    "sourceId": "bnext",
+    "sourceName": "數位時代 Business Next",
+    "category": "AI",
+    "aiModel": "",
+    "date": "2026-09-04",
+    "url": "https://www.bnext.com.tw/",
+    "summary": "前往數位時代網站查閱企業導入 AI 與團隊協作相關深度報導。",
+    "badgeLine1": "轉型",
+    "badgeLine2": "總覽",
+    "posterCaps": "DIGITAL TRANSFORMATION",
+    "posterTitle": "ENTERPRISE HUB",
+    "posterSub": "企業轉型 • AI 協作報導",
+    "posterPill": "數位時代首頁",
+    "footerTag": "數位時代 • 官方首頁"
+  },
+  {
+    "id": "art-24",
+    "title": "數位時代 影音與新商模報導總覽",
+    "sourceId": "bnext",
+    "sourceName": "數位時代 Business Next",
+    "category": "ECOMMERCE",
+    "aiModel": "",
+    "date": "2026-07-30",
+    "url": "https://www.bnext.com.tw/",
+    "summary": "前往數位時代網站瀏覽短影音、直播商模與品牌行銷最新文章。",
+    "badgeLine1": "商模",
+    "badgeLine2": "總覽",
+    "posterCaps": "COMMERCE & MEDIA",
+    "posterTitle": "MEDIA COMMERCE",
+    "posterSub": "影音商模 • 品牌行銷觀察",
+    "posterPill": "數位時代首頁",
+    "footerTag": "數位時代 • 官方首頁"
+  },
+  {
+    "id": "art-25",
+    "title": "設計的下一步不是預測，是讀懂張力：iF Design Trend Report 2026",
+    "sourceId": "design",
+    "sourceName": "設計趨勢與 UX 觀察",
+    "category": "DESIGN",
+    "aiModel": "",
+    "date": "2026-05-09",
+    "url": "https://www.designthinking.com.tw/posts/if-design-trend-report-2026-frameworks",
+    "summary": "剖析 iF Design Trend Report 2026 提出的核心觀察框架，在變動與 AI 普及的環境中找回設計主體性。",
+    "badgeLine1": "趨勢",
+    "badgeLine2": "框架",
+    "posterCaps": "IF DESIGN REPORT 2026",
+    "posterTitle": "DESIGN TENSIONS",
+    "posterSub": "讀懂設計張力 • 2026 趨勢框架",
+    "posterPill": "iF 趨勢報告解析",
+    "footerTag": "Design Thinking • 2026 框架"
+  },
+  {
+    "id": "art-26",
+    "title": "更友善的未來：淺談包容性設計",
+    "sourceId": "design",
+    "sourceName": "設計趨勢與 UX 觀察",
+    "category": "DESIGN",
+    "aiModel": "",
+    "date": "2021-08-16",
+    "url": "https://medium.com/uxi-design/%E6%9B%B4%E5%8F%8B%E5%96%84%E7%9A%84%E6%9C%AA%E4%BE%86-%E6%B7%BA%E8%AB%87%E5%8C%85%E5%AE%B9%E6%80%A7%E8%A8%AD%E8%A8%88-674ffe54a245",
+    "summary": "從移動力、認知力與感知力多元群體出發，探討色彩對比、平易文字與無障礙體驗如何讓設計更友善。",
+    "badgeLine1": "友善",
+    "badgeLine2": "體驗",
+    "posterCaps": "INCLUSIVE UX DESIGN",
+    "posterTitle": "INCLUSIVE DESIGN",
+    "posterSub": "多元能力群體 • 色彩與文字可讀性",
+    "posterPill": "包容性設計指南",
+    "footerTag": "UXI Design • 包容性設計"
+  },
+  {
+    "id": "art-27",
+    "title": "當AI 讓所有東西看起來都差不多，設計師到底還能做什麼？",
+    "sourceId": "design",
+    "sourceName": "設計趨勢與 UX 觀察",
+    "category": "DESIGN",
+    "aiModel": "",
+    "date": "2026-09-18",
+    "url": "https://www.designthinking.com.tw/posts/if-design-2026-age-of-average",
+    "summary": "解析「均值時代（Age of Average）」現象：AI 讓基礎水準提升卻也帶來同質化，設計師更需建立差異化價值。",
+    "badgeLine1": "均值",
+    "badgeLine2": "時代",
+    "posterCaps": "AGE OF AVERAGE",
+    "posterTitle": "BEYOND AVERAGE",
+    "posterSub": "AI 同質化挑戰 • 設計師差異化定位",
+    "posterPill": "iF 2026 核心觀點",
+    "footerTag": "Design Thinking • 均值時代"
+  },
+  {
+    "id": "art-28",
+    "title": "2026 台灣設計展「桃園流」9/24 登場！編輯開箱沉浸體驗",
+    "sourceId": "design",
+    "sourceName": "設計趨勢與 UX 觀察",
+    "category": "EXHIBITION",
+    "aiModel": "",
+    "date": "2026-09-24",
+    "url": "https://www.shoppingdesign.com.tw/post/view/13808",
+    "summary": "2026 台灣設計展「桃園流」於青埔與中壢雙主展區登場，開箱沉浸互動、永續循環構件與五感展區亮點。",
+    "badgeLine1": "設計",
+    "badgeLine2": "大展",
+    "posterCaps": "TAIWAN DESIGN EXPO",
+    "posterTitle": "TAOYUAN IN FLOW",
+    "posterSub": "青埔 × 中壢雙主展區 • 沉浸互動體驗",
+    "posterPill": "2026 台灣設計展",
+    "footerTag": "Shopping Design • view/13808"
+  },
+  {
+    "id": "art-29",
+    "title": "2026 臺北數位藝術節10/31 登場！機械白鯨、沈浸裝置進駐臺北典藏植物園",
+    "sourceId": "design",
+    "sourceName": "設計趨勢與 UX 觀察",
+    "category": "EXHIBITION",
+    "aiModel": "",
+    "date": "2026-10-23",
+    "url": "https://www.shoppingdesign.com.tw/post/view/13887",
+    "summary": "集結 30 組國內外團隊於花博未來生活館與臺北典藏植物園展出機械生命、光影互動與沉浸劇場作品。",
+    "badgeLine1": "數位",
+    "badgeLine2": "藝術",
+    "posterCaps": "DIGITAL ART FESTIVAL",
+    "posterTitle": "TAIPEI DIGITAL ART",
+    "posterSub": "機械白鯨與光影 • 典藏植物園沉浸展",
+    "posterPill": "2026 臺北數位藝術節",
+    "footerTag": "Shopping Design • view/13887"
+  },
+  {
+    "id": "art-30",
+    "title": "2026 亞洲藝術雙年展登場！國美館以「共織」為題",
+    "sourceId": "design",
+    "sourceName": "設計趨勢與 UX 觀察",
+    "category": "EXHIBITION",
+    "aiModel": "",
+    "date": "2026-11-12",
+    "url": "https://www.shoppingdesign.com.tw/post/view/13935",
+    "summary": "第 10 屆亞洲藝術雙年展於國立臺灣美術館以「共織」為題，集結 30 組藝術家與台中 5 處空間串聯展出。",
+    "badgeLine1": "雙年",
+    "badgeLine2": "大展",
+    "posterCaps": "ASIAN ART BIENNIAL",
+    "posterTitle": "CO-WEAVING 共織",
+    "posterSub": "國美館 × 台中 5 處空間 • 30 組藝術家",
+    "posterPill": "第 10 屆亞洲藝術雙年展",
+    "footerTag": "Shopping Design • view/13935"
+  },
+  {
+    "id": "art-31",
+    "title": "2026設計雙展揭示產業轉型關鍵",
+    "sourceId": "design",
+    "sourceName": "設計趨勢與 UX 觀察",
+    "category": "EXHIBITION",
+    "aiModel": "",
+    "date": "2026-04-09",
+    "url": "https://money.udn.com/money/story/5721/9429631",
+    "summary": "聚焦台北南港展覽館「2026 AI設計應用博覽會」與「2026臺灣室內設計博覽會」雙展，探討 AI 與微型空間趨勢。",
+    "badgeLine1": "雙展",
+    "badgeLine2": "焦點",
+    "posterCaps": "AI & INTERIOR EXPO",
+    "posterTitle": "2026 DESIGN EXPO",
+    "posterSub": "南港展覽館 • AI 設計與室內設計雙展",
+    "posterPill": "產業轉型關鍵觀察",
+    "footerTag": "經濟日報 • 9429631"
+  },
+  {
+    "id": "art-32",
+    "title": "Shopping Design 設計與生活美學專欄總覽",
+    "sourceId": "design",
+    "sourceName": "設計趨勢與 UX 觀察",
+    "category": "ECOMMERCE",
+    "aiModel": "",
+    "date": "2026-10-09",
+    "url": "https://www.shoppingdesign.com.tw/",
+    "summary": "前往 Shopping Design 網站瀏覽最新設計展覽、品牌風格與空間美學文章。",
+    "badgeLine1": "設計",
+    "badgeLine2": "首頁",
+    "posterCaps": "SHOPPING DESIGN HUB",
+    "posterTitle": "DESIGN & STYLE",
+    "posterSub": "設計展覽 • 品牌與空間美學",
+    "posterPill": "Shopping Design 首頁",
+    "footerTag": "Shopping Design • 官方首頁"
+  },
+  {
+    "id": "art-33",
+    "title": "Google 官方釋出7 個使用Nano Banana Pro 的小技巧",
+    "sourceId": "koc_apple",
+    "sourceName": "電腦王阿達 & 蘋果仁",
+    "category": "AI",
+    "aiModel": "",
+    "date": "2025-11-21",
+    "url": "https://www.kocpc.com.tw/archives/621297",
+    "summary": "整理 Nano Banana Pro 在鏡頭光線、多圖一致性、品牌字型與海報包裝模擬圖上的 7 個實用技巧。",
+    "badgeLine1": "修圖",
+    "badgeLine2": "技巧",
+    "posterCaps": "AI IMAGE EDITOR",
+    "posterTitle": "NANO BANANA PRO",
+    "posterSub": "鏡頭光線控制 • 多圖一致性與海報生成",
+    "posterPill": "官方 7 個使用技巧",
+    "footerTag": "電腦王阿達 • archives/621297"
+  },
+  {
+    "id": "art-34",
+    "title": "ChatGPT 像素風格人物生成教學：Everskies 指令輕鬆玩日韓超夯",
+    "sourceId": "koc_apple",
+    "sourceName": "電腦王阿達 & 蘋果仁",
+    "category": "AI",
+    "aiModel": "GPT",
+    "date": "2025-07-09",
+    "url": "https://applealmond.com/posts/284490",
+    "summary": "分享 Everskies 復古像素 Q 版人物與動物插畫指令，白底構圖方便後續去背與社群貼圖運用。",
+    "badgeLine1": "像素",
+    "badgeLine2": "指令",
+    "posterCaps": "PIXEL ART GENERATION",
+    "posterTitle": "EVERSKIES STYLE",
+    "posterSub": "復古像素角色 • 白底插畫指令教學",
+    "posterPill": "角色生成與去背運用",
+    "footerTag": "蘋果仁 • posts/284490"
+  },
+  {
+    "id": "art-35",
+    "title": "OpenAI 發表ChatGPT Agent，一站式完成AI 搜尋/ 圖片生成/ 下訂單等",
+    "sourceId": "koc_apple",
+    "sourceName": "電腦王阿達 & 蘋果仁",
+    "category": "AI",
+    "aiModel": "GPT",
+    "date": "2025-07-18",
+    "url": "https://applealmond.com/posts/285506",
+    "summary": "解析 ChatGPT Agent 結合虛擬電腦與瀏覽器操作能力，一站式串聯搜尋、文件編輯與跨步驟任務。",
+    "badgeLine1": "自動",
+    "badgeLine2": "助理",
+    "posterCaps": "AUTONOMOUS ASSISTANT",
+    "posterTitle": "CHATGPT AGENT",
+    "posterSub": "虛擬電腦操作 • 跨步驟任務串聯",
+    "posterPill": "一站式 AI 助理模式",
+    "footerTag": "蘋果仁 • posts/285506"
+  },
+  {
+    "id": "art-36",
+    "title": "ChatGPT Agent 實測：從找資料到付款AI 化，還真的靠它幫我買了",
+    "sourceId": "koc_apple",
+    "sourceName": "電腦王阿達 & 蘋果仁",
+    "category": "AI",
+    "aiModel": "GPT",
+    "date": "2025-07-24",
+    "url": "https://applealmond.com/posts/286159",
+    "summary": "實測 ChatGPT Agent 在真實網頁中篩選場次、操作介面與遇到登入或付款確認時的實際互動流程。",
+    "badgeLine1": "實測",
+    "badgeLine2": "評析",
+    "posterCaps": "REAL-WORLD WORKFLOW",
+    "posterTitle": "WEB TASK AGENT",
+    "posterSub": "真實網頁操作 • 登入與付款確認流程",
+    "posterPill": "跨網頁任務實測",
+    "footerTag": "蘋果仁 • posts/286159"
+  },
+  {
+    "id": "art-37",
+    "title": "Premiere 等全面升級AI 功能，明年再強化AI Agent 應用",
+    "sourceId": "koc_apple",
+    "sourceName": "電腦王阿達 & 蘋果仁",
+    "category": "AI",
+    "aiModel": "",
+    "date": "2026-11-11",
+    "url": "https://applealmond.com/posts/331974",
+    "summary": "Adobe MAX 2026 宣布為 Photoshop、Premiere 與 Lightroom 等創作軟體強化 AI 功能與未來 AI Agent 應用。",
+    "badgeLine1": "重磅",
+    "badgeLine2": "升級",
+    "posterCaps": "ADOBE MAX 2026",
+    "posterTitle": "CREATIVE AI AGENT",
+    "posterSub": "Photoshop • Premiere 影像與影音升級",
+    "posterPill": "Adobe MAX 2026 重點",
+    "footerTag": "蘋果仁 • posts/331974"
+  },
+  {
+    "id": "art-38",
+    "title": "2026 資訊月現場直擊：免密碼登入、AI 做電影、百年前地圖",
+    "sourceId": "koc_apple",
+    "sourceName": "電腦王阿達 & 蘋果仁",
+    "category": "EXHIBITION",
+    "aiModel": "",
+    "date": "2026-11-12",
+    "url": "https://applealmond.com/posts/332187",
+    "summary": "直擊 2026 資訊月現場亮點，涵蓋 Passkey 免密碼登入、AI 影音創作、會議錄音整理與數位典藏體驗。",
+    "badgeLine1": "現場",
+    "badgeLine2": "直擊",
+    "posterCaps": "TECH EXHIBITION 2026",
+    "posterTitle": "IT MONTH LIVE",
+    "posterSub": "Passkey 免密碼 • AI 影音與數位典藏",
+    "posterPill": "2026 資訊月現場直擊",
+    "footerTag": "蘋果仁 • posts/332187"
+  },
+  {
+    "id": "art-39",
+    "title": "Siri AI 傳明年進化成能主動做事的 AI Agent！John Ternus 要求加速開發",
+    "sourceId": "koc_apple",
+    "sourceName": "電腦王阿達 & 蘋果仁",
+    "category": "AI",
+    "aiModel": "",
+    "date": "2026-11-09",
+    "url": "https://applealmond.com/posts/331722",
+    "summary": "報導 Siri AI 繁體中文即將上線並加速朝 AI Agent 演進，未來有望強化主動式跨任務輔助能力。",
+    "badgeLine1": "新訊",
+    "badgeLine2": "前瞻",
+    "posterCaps": "APPLE INTELLIGENCE",
+    "posterTitle": "NEXT-GEN SIRI",
+    "posterSub": "繁中支援推進 • 加速朝 AI Agent 演進",
+    "posterPill": "蘋果 AI 發展動態",
+    "footerTag": "蘋果仁 • posts/331722"
+  },
+  {
+    "id": "art-40",
+    "title": "Google 又有新模型！Gemini 4 Neon 正式亮相，對標 Claude Opus 5.5、GPT-6.2 Sol",
+    "sourceId": "koc_apple",
+    "sourceName": "電腦王阿達 & 蘋果仁",
+    "category": "AI",
+    "aiModel": "GPT",
+    "date": "2026-11-19",
+    "url": "https://www.kocpc.com.tw/archives/704039",
+    "summary": "盤點最新旗艦 AI 模型競爭格局，涵蓋 Gemini 4 Neon、Claude Opus 5.5 與 GPT-6.2 Sol 等新世代模型定位。",
+    "badgeLine1": "模型",
+    "badgeLine2": "焦點",
+    "posterCaps": "FRONTIER AI MODELS",
+    "posterTitle": "MODEL SHOWDOWN",
+    "posterSub": "Gemini 4 Neon • Claude 5.5 • GPT-6.2",
+    "posterPill": "旗艦模型最新動態",
+    "footerTag": "電腦王阿達 • archives/704039"
+  },
+  {
+    "id": "art-41",
+    "title": "Anthropic 推出 Claude Fable 5.2、Mythos 5.2！效能大幅提升",
+    "sourceId": "koc_apple",
+    "sourceName": "電腦王阿達 & 蘋果仁",
+    "category": "AI",
+    "aiModel": "Claude",
+    "date": "2026-11-09",
+    "url": "https://www.kocpc.com.tw/archives/702740",
+    "summary": "整理 Claude Fable 5.2 與 Mythos 5.2 發布重點與效能表現，提供開發與創作工作流參考。",
+    "badgeLine1": "發布",
+    "badgeLine2": "速報",
+    "posterCaps": "ANTHROPIC RELEASE",
+    "posterTitle": "FABLE & MYTHOS 5.2",
+    "posterSub": "效能大幅提升 • 新一代模型發布",
+    "posterPill": "Claude 5.2 發布重點",
+    "footerTag": "電腦王阿達 • archives/702740"
+  }
+];
+
+    let state = {
+      category: 'ALL',
+      aiModel: 'ALL',
+      sourceId: 'ALL',
+      viewMode: 'matrix',
+      search: '',
+      savedOnly: false,
+      bookmarks: JSON.parse(localStorage.getItem('syncdigest_warm_bookmarks_v1') || '[]')
+    };
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function saveBookmarks() {
+      localStorage.setItem('syncdigest_warm_bookmarks_v1', JSON.stringify(state.bookmarks));
+    }
+
+    function toggleBookmark(id, e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const idx = state.bookmarks.indexOf(id);
+      if (idx >= 0) {
+        state.bookmarks.splice(idx, 1);
+      } else {
+        state.bookmarks.push(id);
+      }
+      saveBookmarks();
+      renderAll();
+    }
+
+    function getFilteredArticles() {
+      const q = state.search.trim().toLowerCase();
+      return ARTICLES.filter(item => {
+        const matchCat = state.category === 'ALL' || item.category === state.category;
+        const matchModel =
+          state.aiModel === 'ALL' ||
+          (state.category !== 'ALL' && state.category !== 'AI') ||
+          (item.aiModel && item.aiModel.toLowerCase() === state.aiModel.toLowerCase());
+        const matchSource = state.sourceId === 'ALL' || item.sourceId === state.sourceId;
+        const matchSaved = !state.savedOnly || state.bookmarks.includes(item.id);
+        const matchSearch =
+          !q ||
+          (item.title && item.title.toLowerCase().includes(q)) ||
+          (item.summary && item.summary.toLowerCase().includes(q)) ||
+          (item.sourceName && item.sourceName.toLowerCase().includes(q)) ||
+          (item.footerTag && item.footerTag.toLowerCase().includes(q));
+        return matchCat && matchModel && matchSource && matchSaved && matchSearch;
+      });
+    }
+
+    function buildPosterVisual(article, index, compact = false) {
+      const hClass = compact ? 'h-44 p-4' : 'h-56 p-6';
+      const caps = escapeHtml(article.posterCaps || article.category);
+      const pTitle = escapeHtml(article.posterTitle || 'SYNCDIGEST');
+      const pSub = escapeHtml(article.posterSub || article.sourceName);
+      const pPill = escapeHtml(article.posterPill || '精選彙整');
+      const b1 = escapeHtml(article.badgeLine1 || '精選');
+      const b2 = escapeHtml(article.badgeLine2 || '新知');
+      const refCode = escapeHtml(article.id.toUpperCase());
+      const modelTag = article.aiModel
+        ? `<span class="px-1.5 py-0.5 rounded bg-black/25 text-white font-label-code text-[10px] font-semibold">${escapeHtml(article.aiModel)}</span>`
+        : '';
+
+      const themeIdx = index % 6;
+
+      if (themeIdx === 0) {
+        return `
+          <div class="relative w-full ${hClass} bg-[#fcf8f0] flex flex-col justify-between overflow-hidden select-none">
+            <svg class="absolute -right-8 -bottom-8 w-44 h-44 text-[#faeed9] opacity-70 pointer-events-none" fill="currentColor" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45"></circle>
+              <path d="M50 0 A50 50 0 0 1 100 50 Z" fill="#f4dab3"></path>
+            </svg>
+            <div class="absolute top-4 right-4 flex flex-col items-end opacity-25 font-label-code text-label-code text-on-surface pointer-events-none">
+              <span>${escapeHtml(article.category)}.2026</span>
+              <span>REF: ${refCode}</span>
+            </div>
+            <div class="relative z-10 flex flex-col pr-14">
+              <span class="font-label-caps text-label-caps text-on-tertiary-container tracking-widest font-bold truncate">${caps}</span>
+              <h3 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight mt-1 truncate">${pTitle}</h3>
+              <span class="font-body-sm text-body-sm text-outline font-medium tracking-wide truncate">${pSub}</span>
+            </div>
+            <div class="relative z-10 flex items-center gap-1.5">
+              <div class="bg-surface-container-lowest/85 backdrop-blur-sm px-2.5 py-1 rounded shadow-sm inline-flex items-center gap-1.5 max-w-[75%]">
+                <span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container shrink-0"></span>
+                <span class="font-label-code text-label-code text-on-surface font-semibold truncate">${pPill}</span>
+              </div>
+              ${modelTag}
+            </div>
+            <div class="absolute -bottom-2 right-4 w-14 h-14 rounded-full bg-on-tertiary-container text-surface-container-lowest flex items-center justify-center font-headline-sm text-headline-sm font-bold shadow-md z-20 transition-transform group-hover:scale-105">
+              <span class="text-xs font-semibold leading-tight text-center">${b1}<br>${b2}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      if (themeIdx === 1) {
+        return `
+          <div class="relative w-full ${hClass} bg-[#f2f8f4] flex flex-col justify-between overflow-hidden select-none">
+            <div class="absolute -top-6 -right-6 w-36 h-36 bg-[#def2e6] rounded-full opacity-60 pointer-events-none"></div>
+            <svg class="absolute bottom-2 right-12 w-28 h-28 text-secondary/15 pointer-events-none" viewBox="0 0 100 100">
+              <polygon fill="currentColor" points="50 0, 100 100, 0 100"></polygon>
+            </svg>
+            <div class="relative z-10 flex flex-col pr-10">
+              <span class="font-label-caps text-label-caps text-secondary tracking-widest font-bold truncate">${caps}</span>
+              <h3 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight mt-1 truncate">${pTitle}</h3>
+              <span class="font-body-sm text-body-sm text-outline font-medium tracking-wide truncate">${pSub}</span>
+            </div>
+            <div class="relative z-10 flex items-center gap-1.5">
+              <div class="bg-surface-container-lowest/85 backdrop-blur-sm px-2.5 py-1 rounded shadow-sm inline-flex items-center gap-1.5 max-w-[75%]">
+                <span class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></span>
+                <span class="font-label-code text-label-code text-on-surface font-semibold truncate">${pPill}</span>
+              </div>
+              ${modelTag}
+            </div>
+            <div class="absolute -bottom-2 right-4 w-14 h-14 rounded-full bg-secondary text-surface-container-lowest flex items-center justify-center font-headline-sm text-headline-sm font-bold shadow-md z-20 transition-transform group-hover:scale-105">
+              <span class="text-xs font-semibold leading-tight text-center">${b1}<br>${b2}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      if (themeIdx === 2) {
+        return `
+          <div class="relative w-full ${hClass} bg-[#0f172a] flex flex-col justify-between overflow-hidden select-none text-white">
+            <div class="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none"></div>
+            <div class="absolute right-0 top-0 w-32 h-32 bg-secondary/30 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="relative z-10 flex flex-col pr-10">
+              <span class="font-label-caps text-label-caps text-secondary-fixed tracking-widest font-bold truncate">${caps}</span>
+              <h3 class="font-headline-md text-headline-md font-bold text-white tracking-tight mt-1 truncate">${pTitle}</h3>
+              <span class="font-body-sm text-body-sm text-outline-variant font-medium tracking-wide truncate">${pSub}</span>
+            </div>
+            <div class="relative z-10 flex items-center gap-1.5">
+              <div class="bg-white/10 backdrop-blur-md px-2.5 py-1 rounded inline-flex items-center gap-1.5 max-w-[75%]">
+                <span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed shrink-0"></span>
+                <span class="font-label-code text-label-code text-secondary-fixed font-semibold truncate">${pPill}</span>
+              </div>
+              ${modelTag}
+            </div>
+            <div class="absolute -bottom-2 right-4 w-14 h-14 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-sm text-headline-sm font-bold shadow-md z-20 transition-transform group-hover:scale-105">
+              <span class="text-xs font-semibold leading-tight text-center">${b1}<br>${b2}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      if (themeIdx === 3) {
+        return `
+          <div class="relative w-full ${hClass} bg-[#171f2c] flex flex-col justify-between overflow-hidden select-none text-white">
+            <svg class="absolute top-2 right-2 w-36 h-36 text-white/5 pointer-events-none" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-dasharray="4 4" stroke-width="2"></circle>
+              <circle cx="50" cy="50" fill="none" r="24" stroke="currentColor" stroke-width="1.5"></circle>
+            </svg>
+            <div class="relative z-10 flex flex-col pr-10">
+              <span class="font-label-caps text-label-caps text-tertiary-fixed tracking-widest font-bold truncate">${caps}</span>
+              <h3 class="font-headline-md text-headline-md font-bold text-white tracking-tight mt-1 truncate">${pTitle}</h3>
+              <span class="font-body-sm text-body-sm text-outline-variant font-medium tracking-wide truncate">${pSub}</span>
+            </div>
+            <div class="relative z-10 flex items-center gap-1.5">
+              <div class="bg-white/10 backdrop-blur-md px-2.5 py-1 rounded inline-flex items-center gap-1.5 max-w-[75%]">
+                <span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed shrink-0"></span>
+                <span class="font-label-code text-label-code text-surface-container-lowest font-semibold truncate">${pPill}</span>
+              </div>
+              ${modelTag}
+            </div>
+            <div class="absolute -bottom-2 right-4 w-14 h-14 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-headline-sm text-headline-sm font-bold shadow-md z-20 transition-transform group-hover:scale-105">
+              <span class="text-xs font-semibold leading-tight text-center">${b1}<br>${b2}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      if (themeIdx === 4) {
+        return `
+          <div class="relative w-full ${hClass} bg-[#fbf3f0] flex flex-col justify-between overflow-hidden select-none">
+            <svg class="absolute -right-6 -bottom-6 w-40 h-40 text-[#fbe1d8] pointer-events-none" fill="currentColor" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" opacity="0.5" r="48"></circle>
+              <rect fill="#f8cfc0" height="60" opacity="0.6" rx="12" width="60" x="20" y="20"></rect>
+            </svg>
+            <div class="relative z-10 flex flex-col pr-10">
+              <span class="font-label-caps text-label-caps text-on-tertiary-container tracking-widest font-bold truncate">${caps}</span>
+              <h3 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight mt-1 truncate">${pTitle}</h3>
+              <span class="font-body-sm text-body-sm text-outline font-medium tracking-wide truncate">${pSub}</span>
+            </div>
+            <div class="relative z-10 flex items-center gap-1.5">
+              <div class="bg-surface-container-lowest/85 backdrop-blur-sm px-2.5 py-1 rounded shadow-sm inline-flex items-center gap-1.5 max-w-[75%]">
+                <span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container shrink-0"></span>
+                <span class="font-label-code text-label-code text-on-surface font-semibold truncate">${pPill}</span>
+              </div>
+              ${modelTag}
+            </div>
+            <div class="absolute -bottom-2 right-4 w-14 h-14 rounded-full bg-on-tertiary-container text-surface-container-lowest flex items-center justify-center font-headline-sm text-headline-sm font-bold shadow-md z-20 transition-transform group-hover:scale-105">
+              <span class="text-xs font-semibold leading-tight text-center">${b1}<br>${b2}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="relative w-full ${hClass} bg-[#f1f4f2] flex flex-col justify-between overflow-hidden select-none">
+          <svg class="absolute top-4 right-4 w-32 h-32 text-secondary/20 pointer-events-none" viewBox="0 0 100 100">
+            <rect fill="none" height="80" rx="8" stroke="currentColor" stroke-width="2" width="80" x="10" y="10"></rect>
+            <line stroke="currentColor" stroke-width="1.5" x1="10" x2="90" y1="50" y2="50"></line>
+            <line stroke="currentColor" stroke-width="1.5" x1="50" x2="50" y1="10" y2="90"></line>
+          </svg>
+          <div class="relative z-10 flex flex-col pr-10">
+            <span class="font-label-caps text-label-caps text-secondary tracking-widest font-bold truncate">${caps}</span>
+            <h3 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight mt-1 truncate">${pTitle}</h3>
+            <span class="font-body-sm text-body-sm text-outline font-medium tracking-wide truncate">${pSub}</span>
+          </div>
+          <div class="relative z-10 flex items-center gap-1.5">
+            <div class="bg-surface-container-lowest/85 backdrop-blur-sm px-2.5 py-1 rounded shadow-sm inline-flex items-center gap-1.5 max-w-[75%]">
+              <span class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></span>
+              <span class="font-label-code text-label-code text-on-surface font-semibold truncate">${pPill}</span>
+            </div>
+            ${modelTag}
+          </div>
+          <div class="absolute -bottom-2 right-4 w-14 h-14 rounded-full bg-primary-container text-surface-container-lowest flex items-center justify-center font-headline-sm text-headline-sm font-bold shadow-md z-20 transition-transform group-hover:scale-105">
+            <span class="text-xs font-semibold leading-tight text-center">${b1}<br>${b2}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function getCategoryPill(category) {
+      const map = {
+        EXHIBITION: '展覽活動',
+        AI: 'AI 技術',
+        DESIGN: '設計新知',
+        ECOMMERCE: '電商策略'
+      };
+      return map[category] || '精選新知';
+    }
+
+    function createJapaneseCardHtml(article, index, compact = false) {
+      const isSaved = state.bookmarks.includes(article.id);
+      const padClass = compact ? 'p-4' : 'p-space-lg';
+      const titleClass = compact ? 'text-base' : 'font-headline-md text-headline-md';
+      const footerNegMargin = compact ? '-mx-4 -mb-4 px-4 py-2' : '-mx-space-lg -mb-space-lg px-space-lg py-2.5';
+
+      return `
+        <article class="group bg-surface-container-lowest rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden relative border border-outline-variant/15">
+          <a href="${escapeHtml(article.url)}" target="_blank" rel="noopener noreferrer" class="block">
+            ${buildPosterVisual(article, index, compact)}
+          </a>
+
+          <div class="${padClass} flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-space-xs mb-space-sm">
+                <div class="flex items-center gap-space-xs min-w-0">
+                  <span class="px-2 py-0.5 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-code text-label-code font-semibold shrink-0">
+                    ${getCategoryPill(article.category)}
+                  </span>
+                  <span class="font-body-sm text-body-sm text-outline truncate">
+                    ${escapeHtml(article.sourceName)}
+                  </span>
+                </div>
+                <button type="button" data-bookmark-id="${escapeHtml(article.id)}" class="bookmark-btn material-symbols-outlined text-[18px] cursor-pointer transition-colors shrink-0 ${isSaved ? 'text-on-tertiary-container' : 'text-outline hover:text-on-surface'}" title="${isSaved ? '取消書籤' : '加入書籤'}">
+                  ${isSaved ? 'bookmark' : 'bookmark_border'}
+                </button>
+              </div>
+
+              <h2 class="${titleClass} font-semibold text-on-surface leading-snug group-hover:text-on-tertiary-container transition-colors line-clamp-2">
+                <a href="${escapeHtml(article.url)}" target="_blank" rel="noopener noreferrer">
+                  ${escapeHtml(article.title)}
+                </a>
+              </h2>
+
+              <p class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                ${escapeHtml(article.summary)}
+              </p>
+            </div>
+
+            <div class="pt-space-md mt-space-md flex items-center justify-between font-label-code text-label-code text-outline bg-surface-container-low/60 ${footerNegMargin}">
+              <div class="flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>${escapeHtml(article.date)}</span>
+              </div>
+              <a href="${escapeHtml(article.url)}" target="_blank" rel="noopener noreferrer" class="font-medium text-on-surface-variant hover:text-on-tertiary-container transition-colors truncate">
+                ${escapeHtml(article.footerTag || article.sourceName)}
+              </a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderHeaderMeta() {
+      const cat = CATEGORIES.find(c => c.id === state.category) || CATEGORIES[0];
+      const eyebrowEl = document.getElementById('heroEyebrow');
+      const titleEl = document.getElementById('heroMainTitle');
+      const subEl = document.getElementById('heroSubTitle');
+
+      if (eyebrowEl) eyebrowEl.textContent = state.savedOnly ? 'SAVED READING ARCHIVE' : cat.eyebrow;
+      if (titleEl) titleEl.textContent = state.savedOnly ? '我的書籤收藏清單' : cat.title;
+      if (subEl) subEl.textContent = state.savedOnly ? 'Bookmarked Articles • Personal Collection' : cat.subtitle;
+    }
+
+    function renderCategoryButtons() {
+      const group = document.getElementById('categoryFilterGroup');
+      if (!group) return;
+
+      group.innerHTML = CATEGORIES.map(cat => {
+        const count = ARTICLES.filter(a => cat.id === 'ALL' || a.category === cat.id).length;
+        const active = state.category === cat.id && !state.savedOnly;
+        const cls = active
+          ? 'category-btn active px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary font-body-sm text-body-sm shadow-sm transition-all hover:bg-on-surface'
+          : 'category-btn px-3.5 py-1.5 rounded-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm hover:bg-surface-container-high transition-all shadow-[0_1px_2px_rgba(0,0,0,0.04)]';
+
+        return `
+          <button type="button" data-cat="${cat.id}" class="${cls}">
+            ${escapeHtml(cat.label)} (${count})
+          </button>
+        `;
+      }).join('');
+
+      group.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.savedOnly = false;
+          state.category = btn.getAttribute('data-cat');
+          if (state.category !== 'ALL' && state.category !== 'AI') {
+            state.aiModel = 'ALL';
+          }
+          renderAll();
+        });
+      });
+
+      const aiSub = document.getElementById('aiModelSubBar');
+      if (aiSub) {
+        if (state.category === 'ALL' || state.category === 'AI') {
+          aiSub.classList.remove('hidden');
+          aiSub.classList.add('flex');
+        } else {
+          aiSub.classList.add('hidden');
+          aiSub.classList.remove('flex');
+        }
+      }
+
+      document.querySelectorAll('.model-btn').forEach(btn => {
+        const m = btn.getAttribute('data-model');
+        if (m === state.aiModel) {
+          btn.className = 'model-btn px-2.5 py-1 rounded bg-primary-container text-surface-container-lowest font-body-sm text-body-sm';
+        } else {
+          btn.className = 'model-btn px-2.5 py-1 rounded bg-surface-container text-on-surface font-body-sm text-body-sm hover:bg-surface-container-high';
+        }
+      });
+    }
+
+    function renderSourceButtons() {
+      const group = document.getElementById('sourceFilterGroup');
+      if (!group) return;
+
+      const allActive = state.sourceId === 'ALL';
+      const allCls = allActive
+        ? 'px-2.5 py-1 rounded bg-on-tertiary-container text-surface-container-lowest font-body-sm text-body-sm'
+        : 'px-2.5 py-1 rounded bg-surface-container text-on-surface font-body-sm text-body-sm hover:bg-surface-container-high';
+
+      const srcBtns = SOURCES.map(src => {
+        const active = state.sourceId === src.id;
+        const cls = active
+          ? 'px-2.5 py-1 rounded bg-on-tertiary-container text-surface-container-lowest font-body-sm text-body-sm'
+          : 'px-2.5 py-1 rounded bg-surface-container text-on-surface font-body-sm text-body-sm hover:bg-surface-container-high';
+        return `<button type="button" data-src="${src.id}" class="src-btn ${cls}">${escapeHtml(src.shortName)}</button>`;
+      }).join('');
+
+      group.innerHTML = `
+        <span class="font-label-caps text-label-caps text-outline mr-1 tracking-wider">來源媒體：</span>
+        <button type="button" data-src="ALL" class="src-btn ${allCls}">全部</button>
+        ${srcBtns}
+      `;
+
+      group.querySelectorAll('.src-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.sourceId = btn.getAttribute('data-src');
+          renderAll();
+        });
+      });
+    }
+
+    function renderStats(filtered) {
+      const totalEl = document.getElementById('statTotalNum');
+      const aiEl = document.getElementById('statAiNum');
+      const designExEl = document.getElementById('statDesignExNum');
+      const savedBadge = document.getElementById('savedCountBadge');
+      const footerCap = document.getElementById('footerCountCaption');
+
+      if (totalEl) totalEl.textContent = String(ARTICLES.length).padStart(2, '0');
+      if (aiEl) {
+        const aiCnt = ARTICLES.filter(a => a.category === 'AI').length;
+        aiEl.textContent = String(aiCnt).padStart(2, '0');
+      }
+      if (designExEl) {
+        const deCnt = ARTICLES.filter(a => a.category === 'DESIGN' || a.category === 'EXHIBITION').length;
+        designExEl.textContent = String(deCnt).padStart(2, '0');
+      }
+      if (savedBadge) savedBadge.textContent = state.bookmarks.length;
+      if (footerCap) {
+        footerCap.textContent = `展示 ${filtered.length} / ${ARTICLES.length} 篇聚合新知 • 每日 08:30 自動更新`;
+      }
+    }
+
+    function renderMatrixGrid(filtered) {
+      const grid = document.getElementById('matrixGrid');
+      if (!grid) return;
+
+      const sorted = [...filtered].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+      grid.innerHTML = sorted.length > 0
+        ? sorted.map((art, idx) => createJapaneseCardHtml(art, idx, false)).join('')
+        : `<div class="col-span-full bg-surface-container-lowest rounded-2xl border border-dashed border-outline-variant p-12 text-center text-sm text-on-surface-variant">目前篩選條件下沒有符合的新知文章</div>`;
+    }
+
+    function renderColumnsBoard(filtered) {
+      const grid = document.getElementById('columnsGrid');
+      if (!grid) return;
+
+      const visibleSources = state.sourceId === 'ALL'
+        ? SOURCES
+        : SOURCES.filter(s => s.id === state.sourceId);
+
+      grid.className = visibleSources.length === 1
+        ? 'grid grid-cols-1 max-w-xl gap-space-md'
+        : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-space-md min-w-[1260px]';
+
+      grid.innerHTML = visibleSources.map((src, sIdx) => {
+        const items = filtered
+          .filter(a => a.sourceId === src.id)
+          .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+        const cardsHtml = items.length > 0
+          ? items.map((art, idx) => createJapaneseCardHtml(art, idx + sIdx, true)).join('')
+          : `<div class="bg-surface-container-lowest rounded-2xl border border-dashed border-outline-variant p-6 text-center text-xs text-on-surface-variant">此分類目前無對應文章</div>`;
+
+        return `
+          <div class="flex flex-col gap-space-md bg-surface-container-low p-3 rounded-2xl border border-outline-variant/20">
+            <div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-xs flex items-center justify-between gap-2">
+              <div class="min-w-0">
+                <a href="${src.url}" target="_blank" rel="noopener noreferrer" class="font-headline-sm text-headline-sm font-semibold text-on-surface hover:text-on-tertiary-container transition-colors block truncate">
+                  ${escapeHtml(src.name)}
+                </a>
+                <p class="font-body-sm text-body-sm text-outline truncate mt-0.5">${escapeHtml(src.tagline)}</p>
+              </div>
+              <span class="font-label-code text-label-code px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-semibold shrink-0">${items.length}</span>
+            </div>
+
+            <div class="flex flex-col gap-space-md">
+              ${cardsHtml}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderAnalyticsView(filtered) {
+      const container = document.getElementById('analyticsContainer');
+      if (!container) return;
+
+      const catStats = [
+        { id: 'AI', label: 'AI 技術與工具', color: 'bg-on-tertiary-container', count: filtered.filter(a => a.category === 'AI').length },
+        { id: 'DESIGN', label: '設計新知與體驗', color: 'bg-secondary', count: filtered.filter(a => a.category === 'DESIGN').length },
+        { id: 'ECOMMERCE', label: '電商策略與營運', color: 'bg-primary-container', count: filtered.filter(a => a.category === 'ECOMMERCE').length },
+        { id: 'EXHIBITION', label: '展覽與藝文現場', color: 'bg-tertiary-container', count: filtered.filter(a => a.category === 'EXHIBITION').length }
+      ];
+
+      const sourceStats = SOURCES.map(src => ({
+        name: src.name,
+        tagline: src.tagline,
+        count: filtered.filter(a => a.sourceId === src.id).length
+      }));
+
+      const maxCat = Math.max(1, ...catStats.map(c => c.count));
+      const maxSrc = Math.max(1, ...sourceStats.map(s => s.count));
+
+      container.innerHTML = `
+        <div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm border border-outline-variant/15 flex flex-col gap-space-md">
+          <div>
+            <span class="font-label-caps text-label-caps text-on-tertiary-container tracking-widest">TAXONOMY DISTRIBUTION</span>
+            <h3 class="font-headline-md text-headline-md font-semibold text-on-surface mt-1">四大知識類別分佈佔比</h3>
+          </div>
+          <div class="flex flex-col gap-4 mt-2">
+            ${catStats.map(c => {
+              const pct = Math.round((c.count / maxCat) * 100);
+              return `
+                <div>
+                  <div class="flex items-center justify-between text-xs font-medium mb-1.5">
+                    <span class="text-on-surface">${c.label}</span>
+                    <span class="font-label-code text-on-surface-variant font-semibold">${c.count} 篇</span>
+                  </div>
+                  <div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+                    <div class="h-full ${c.color} rounded-full transition-all duration-500" style="width: ${pct}%"></div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+
+        <div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm border border-outline-variant/15 flex flex-col gap-space-md">
+          <div>
+            <span class="font-label-caps text-label-caps text-secondary tracking-widest">MEDIA SOURCES COVERAGE</span>
+            <h3 class="font-headline-md text-headline-md font-semibold text-on-surface mt-1">五大媒體來源收錄統計</h3>
+          </div>
+          <div class="flex flex-col gap-4 mt-2">
+            ${sourceStats.map(s => {
+              const pct = Math.round((s.count / maxSrc) * 100);
+              return `
+                <div>
+                  <div class="flex items-center justify-between text-xs font-medium mb-1">
+                    <span class="text-on-surface font-semibold">${escapeHtml(s.name)}</span>
+                    <span class="font-label-code text-secondary font-semibold">${s.count} 篇</span>
+                  </div>
+                  <div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+                    <div class="h-full bg-secondary rounded-full transition-all duration-500" style="width: ${pct}%"></div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderAll() {
+      renderHeaderMeta();
+      renderCategoryButtons();
+      renderSourceButtons();
+
+      const filtered = getFilteredArticles();
+      renderStats(filtered);
+
+      const mainContainer = document.getElementById('mainContainer');
+      const matrixSec = document.getElementById('matrixViewSection');
+      const colsSec = document.getElementById('columnsViewSection');
+      const analyticsSec = document.getElementById('analyticsViewSection');
+      const statusText = document.getElementById('viewStatusText');
+
+      const btnCols = document.getElementById('btnViewColumns');
+      const btnMatrix = document.getElementById('btnViewMatrix');
+      const btnAnalytics = document.getElementById('btnViewAnalytics');
+
+      const activeBtnCls = 'view-nav-btn px-3 py-1.5 rounded transition-all bg-primary-container text-surface-container-lowest font-headline-sm text-body-sm';
+      const idleBtnCls = 'view-nav-btn px-3 py-1.5 rounded text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container-high transition-all';
+
+      matrixSec.classList.add('hidden');
+      colsSec.classList.add('hidden');
+      analyticsSec.classList.add('hidden');
+      btnCols.className = idleBtnCls;
+      btnMatrix.className = idleBtnCls;
+      btnAnalytics.className = idleBtnCls;
+
+      if (state.viewMode === 'columns') {
+        mainContainer.className = 'w-full max-w-[1640px] mx-auto px-6 lg:px-10 py-space-xl transition-all';
+        colsSec.classList.remove('hidden');
+        btnCols.className = activeBtnCls;
+        if (statusText) statusText.textContent = '5 欄並列模式';
+        renderColumnsBoard(filtered);
+      } else if (state.viewMode === 'analytics') {
+        mainContainer.className = 'w-full max-w-7xl mx-auto px-6 lg:px-12 py-space-xl transition-all';
+        analyticsSec.classList.remove('hidden');
+        btnAnalytics.className = activeBtnCls;
+        if (statusText) statusText.textContent = '趨勢圖表模式';
+        renderAnalyticsView(filtered);
+      } else {
+        mainContainer.className = 'w-full max-w-7xl mx-auto px-6 lg:px-12 py-space-xl transition-all';
+        matrixSec.classList.remove('hidden');
+        btnMatrix.className = activeBtnCls;
+        if (statusText) statusText.textContent = '卡片型錄模式';
+        renderMatrixGrid(filtered);
+      }
+
+      document.querySelectorAll('.bookmark-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const id = btn.getAttribute('data-bookmark-id');
+          if (id) toggleBookmark(id, e);
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.addEventListener('input', e => {
+          state.search = e.target.value || '';
+          renderAll();
+        });
+      }
+
+      document.querySelectorAll('.model-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.aiModel = btn.getAttribute('data-model');
+          renderAll();
+        });
+      });
+
+      document.getElementById('btnViewColumns')?.addEventListener('click', () => {
+        state.viewMode = 'columns';
+        renderAll();
+      });
+      document.getElementById('btnViewMatrix')?.addEventListener('click', () => {
+        state.viewMode = 'matrix';
+        renderAll();
+      });
+      document.getElementById('btnViewAnalytics')?.addEventListener('click', () => {
+        state.viewMode = 'analytics';
+        renderAll();
+      });
+
+      const btnSaved = document.getElementById('btnSavedFilter');
+      if (btnSaved) {
+        btnSaved.addEventListener('click', () => {
+          state.savedOnly = !state.savedOnly;
+          btnSaved.className = state.savedOnly
+            ? 'flex items-center gap-space-xs px-3.5 py-2 bg-on-tertiary-container text-surface-container-lowest font-body-sm text-body-sm rounded transition-colors'
+            : 'flex items-center gap-space-xs px-3.5 py-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm rounded transition-colors';
+          renderAll();
+        });
+      }
+
+      document.getElementById('brandHomeLink')?.addEventListener('click', e => {
+        e.preventDefault();
+        state.category = 'ALL';
+        state.aiModel = 'ALL';
+        state.sourceId = 'ALL';
+        state.savedOnly = false;
+        state.viewMode = 'matrix';
+        state.search = '';
+        if (searchInput) searchInput.value = '';
+        renderAll();
+      });
+
+      renderAll();
+    });
+  </script>
+</body>
+</html>
